@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bài tập về lập trình hướng đối tượng</title>
+</head>
+<body>
+    <div>
+        <h2>Bài tập: Xây dựng lớp mô tả hình chữ nhật</h2>
+        <table>
+            <tr>
+                <td><label for="inputHeight">Nhập chiều cao hình chữ nhật</label></td>
+                <td><input type="number" id="inputHeight"></td>
+            </tr>
+            <tr>
+                <td><label for="inputWidth">Nhập chiều rộng hình chữ nhật</label></td>
+                <td><input type="number" id="inputWidth"></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="showInfoRec()">Kết quả</button></td>
+            </tr>
+        </table>
+        <p id="result11"></p> <br>
+        <p id="result12"></p>
+        <canvas id="myRec" style="border: 1px;"></canvas>
+    </div>
+
+
+    <div>
+        <h2>Bài tập: Xây dựng lớp mô tả Temperature</h2>
+        <label for="inputCelcius">Nhiệt độ tại thời điểm hiện tại (độ C):</label>
+        <input type="number" id="inputCelcius">
+        <button type="button" onclick="showOtherUnits()">Chuyển đổi nhiệt độ</button>
+        <p id="result21"></p> <br>
+        <p id="result22"></p>
+    </div>
+</body>
+<script src="./oopExcercises.js"></script>
+</html>
