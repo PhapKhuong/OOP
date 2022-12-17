@@ -68,3 +68,102 @@ function showOtherUnits()
         document.getElementById("result21").innerText = "Kết quả đổi sang độ F: " + tem.convertToFahrenheit();
         document.getElementById("result22").innerText = "Kết quả đổi sang độ K: " + tem.convertToKelvin();
     };
+
+
+// Bài tập: Ứng dụng mô phỏng câu chuyện Adam và Eva
+
+class Apple
+    {
+        constructor (weight)
+            {
+                this.weight = weight;
+            };
+        setWeight (newWeight)
+            {
+                this.weight = newWeight;
+            };
+        decrease()
+            {
+                return this.weight--;
+            };
+        isEmpty()
+            {
+                if (this.weight === 0) return true;
+                else return false;
+            };
+    };
+
+class Human
+    {
+        constructor (name, gender, weight)
+            {
+                this.name = name;
+                this.gender = gender;
+                this.weight = weight;
+            };
+        setName (newName)
+            {
+                this.name = newName;
+            };
+        setGender (newGender)
+            {
+                this.gender = newGender;
+            };
+        setWeight (newWeight)
+            {
+                this.weight = newWeight;
+            };
+        checkApple(forApple)
+            {
+                if (forApple.isEmpty()) return true;
+            };
+        eatApple()
+            {
+                this.weight++;
+            };
+        saySth(str)
+            {
+                alert (str);
+            };
+    };
+
+function enjoyApple()
+    {
+        let adam = new Human();
+        adam.setName ('Adam');
+        adam.setGender (true);
+        adam.setWeight (75);
+
+        let eva = new Human();
+        eva.setName ('eva');
+        eva.setGender (false);
+        eva.setWeight (60);
+
+        let apple = new Apple();
+        apple.setWeight(+prompt("Táo to bao nhiêu?"));
+
+        while (true)
+            {
+                adam.saySth ("Anh ăn nhé!");
+                adam.eatApple();
+                apple.decrease();
+                if (!adam.checkApple (apple))
+                    {
+                        adam.saySth ("Eva! Em ăn đi!");
+                        eva.saySth ("Vâng. Em ăn đây!");
+                        eva.eatApple();
+                        apple.decrease();
+                    }
+                else 
+                    {
+                        adam.saySth ("Eva! Hết mất rồi em!");
+                        break;
+                    };
+                if (!adam.checkApple (apple)) eva.saySth ("Adam! Anh ăn đi!");
+                else 
+                    {
+                        eva.saySth ("Adam! Hết mất rồi anh!");
+                        break;
+                    };
+            };
+    };
