@@ -167,3 +167,72 @@ function enjoyApple()
                     };
             };
     };
+
+
+// Bài tập: Mô phỏng sự tương tác giữa công tắc và bóng đèn
+
+class ElectricLamp
+    {
+        constructor (status)
+            {
+                this.status = status;
+            };
+        setStatus (newStatus)
+            {
+                this.status = newStatus;
+            };
+        turnOn ()
+            {
+                alert ("Lamp is light");
+            };
+        turnOff ()
+            {
+                alert ("Lamp is Not light");
+            };
+    };
+
+class SwitchButton
+    {
+        constructor (status, lamp)
+            {
+                this.status = status;
+                this.lamp = lamp;
+            };
+        setStatus (newStatus)
+            {
+                this.status = newStatus;
+            };
+        setLamp (newLamp)
+            {
+                this.lamp = newLamp;
+            };
+        connect(equipment)
+            {
+                if (this.status) equipment.turnOn();
+                else equipment.turnOff();
+            };
+        switchOff()
+            {
+                return this.status = false;
+            };
+        switchOn()
+            {
+                return this.status = true;
+            };
+    };
+
+function turnOnOff()
+    {
+        let phillip = new ElectricLamp();
+        phillip.setStatus (false);
+
+        let apt = new SwitchButton();
+        apt.setLamp(phillip);
+        apt.setStatus(false);
+
+        let checkbox = document.getElementsByName("sw");
+        if (checkbox[1].checked) apt.switchOff();
+        else apt.switchOn();
+
+        apt.connect(apt.lamp);
+    };
