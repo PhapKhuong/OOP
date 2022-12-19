@@ -184,10 +184,12 @@ class ElectricLamp
         turnOn ()
             {
                 alert ("Lamp is light");
+                return this.status = true;
             };
         turnOff ()
             {
                 alert ("Lamp is Not light");
+                return this.status = true;
             };
     };
 
@@ -221,18 +223,17 @@ class SwitchButton
             };
     };
 
+let phillip = new ElectricLamp();
+phillip.setStatus (false);
+let apt = new SwitchButton();
+apt.setLamp(phillip);
+apt.setStatus(false);
+
 function turnOnOff()
     {
-        let phillip = new ElectricLamp();
-        phillip.setStatus (false);
-
-        let apt = new SwitchButton();
-        apt.setLamp(phillip);
-        apt.setStatus(false);
-
         let checkbox = document.getElementsByName("sw");
-        if (checkbox[1].checked) apt.switchOff();
-        else apt.switchOn();
+        if (checkbox[0].checked) apt.switchOn();
+        else apt.switchOff();
 
         apt.connect(apt.lamp);
     };
