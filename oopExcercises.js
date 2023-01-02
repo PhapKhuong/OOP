@@ -237,3 +237,104 @@ function turnOnOff()
 
         apt.connect(apt.lamp);
     };
+
+// Bài tập: Mô phỏng sự hoạt động của đèn pin
+class Battery
+    {
+        constructor(energy)
+            {
+                this.energy = energy;
+            };
+        
+        setEnergy (newEnergy)
+            {
+                this.energy = newEnergy;
+            };
+
+        getEnergy ()
+            {
+                return this.energy;
+            };
+
+        decreaseEnergy ()
+            {
+                if (this.energy > 0)
+                    {
+                        this.energy--;
+                        return this.energy;
+                    };
+            };
+    };
+
+class FlashLamp
+    {
+        constructor (battery, status, brightness)
+            {
+                this.battery = battery;
+                this.status = status;
+                this.brightness = brightness;
+            };
+
+        setBattery (newBattery)
+            {
+                this.battery = newBattery;
+            };
+
+        setStatus (newStatus)
+            {
+                this.status = newStatus;
+            };
+
+        setBrightness (newBrightness)
+            {
+                this.brightness = newBrightness;
+            };
+        
+        getBattery ()
+            {
+                return this.battery;
+            };
+
+        getStatus ()
+            {
+                return this.status;
+            };
+
+        getBrightness ()
+            {
+                return this.brightness;
+            };
+
+        turnOn (power)
+            {
+                this.setStatus (true);
+                this.setBrightness (power.getEnergy());
+                for (let i = power.getEnergy(); i > 0; i--)
+                    {
+                        alert ("Đèn sáng! Độ sáng: " + this.getBrightness() + "; Năng lượng: " + power.getEnergy());
+                        power.decreaseEnergy();
+                        this.setBrightness (power.getEnergy());
+                    };
+                if (power.getEnergy() === 0) alert ("Hết pin, đèn tắt");
+            };
+
+        turnOff ()
+            {
+                this.setStatus (false);
+                alert ("Đèn tắt!");
+            };
+    };
+
+let rabbit = new Battery();
+rabbit.setEnergy (+prompt("Năng lượng ban đầu của pin"));
+
+let flash = new FlashLamp();
+flash.setBattery (rabbit);
+flash.setStatus (false);
+
+function controlSwitch()
+    {
+        let checkbox = document.getElementsByName("onoff");
+        if (checkbox[0].checked) flash.turnOn(rabbit);
+        else flash.turnOff();
+    };
